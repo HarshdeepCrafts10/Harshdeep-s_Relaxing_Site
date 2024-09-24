@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stelle Interattive</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .star {
+            width: 50px;
+            height: 50px;
+            background: url('star.png') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .star:active {
+            transform: scale(1.5);
+        }
+        .score {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="star" onclick="playSound(); increaseScore();"></div>
+    <div class="score">Punti: <span id="score">0</span></div>
+    <audio id="sound" src="clicksound.wav"></audio>
+    <script>
+        let score = 0;
+        function playSound() {
+            document.getElementById('sound').play();
+        }
+        function increaseScore() {
+            score++;
+            document.getElementById('score').innerText = score;
+        }
+    </script>
+</body>
+</html>
